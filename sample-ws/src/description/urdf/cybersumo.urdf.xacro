@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot name="cybersumo" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <link name="base_link"/>
+
+    <!-- Body -->
+    <link name="body_link">
+        <!-- Appearance -->
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+            </geometry>
+        </visual>
+        <!-- Physcial properties -->
+        <collision>
+        </collision>
+        <inertial>
+        </inertial>
+    </link>
+
+</robot>

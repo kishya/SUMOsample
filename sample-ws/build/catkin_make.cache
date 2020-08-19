@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/sumojmk/Documents/sample-ws/devel -DCMAKE_INSTALL_PREFIX=/home/sumojmk/Documents/sample-ws/install -G Unix Makefiles
