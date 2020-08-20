@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot name="constants" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <!-- Distances from Body to Wheels -->
+    <xacro:property name="right_wheel" value="-0.054"/>
+    <xacro:property name="left_wheel" value="0.054"/>
+    <xacro:property name="wheel_x" value="-0.019"/>
+    <xacro:property name="wheel_z" value="0.02"/>
+
+</robot>

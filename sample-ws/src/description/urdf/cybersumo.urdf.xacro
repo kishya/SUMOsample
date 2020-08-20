@@ -1,21 +1,66 @@
 <?xml version="1.0"?>
 <robot name="cybersumo" xmlns:xacro="http://ros.org/wiki/xacro">
 
+    <!-- Includes -->
+    <xacro:include filename="$(find description)/urdf/constants.xacro"/>
+
     <link name="base_link"/>
 
     <!-- Body -->
     <link name="body_link">
         <!-- Appearance -->
         <visual>
+            <!-- Set reference frame -->
             <origin xyz="0 0 0" rpy="0 0 0"/>
+            <!-- Define shape -->
             <geometry>
+                <mesh filename="package://description/urdf/meshes/sample_body.dae"/>
             </geometry>
         </visual>
+
         <!-- Physcial properties -->
         <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://description/urdf/meshes/sample_body.dae"/>
+            </geometry>
         </collision>
-        <inertial>
-        </inertial>
+
     </link>
 
+    <joint name="body_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="body_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <!-- Wheels -->
+    <xacro:macro name="Wheel" params="lr">
+        <link name="${lr}_wheel_link">
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <mesh filename="package://description/urdf/meshes/sample_wheels.dae"/>
+                </geometry>
+            </visual>
+
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <mesh filename="package://description/urdf/meshes/sample_wheels.dae"/>
+                </geometry>
+            </collision>
+
+        </link>
+
+        <joint name="${lr}_wheel_link" type="continuous">
+            <parent link="body_link"/>
+            <child link="${lr}_wheel_link"/>
+            <origin xyz="${wheel_x} ${left_wheel if lr == 'left' else right_wheel} ${wheel_z}"/>
+            <axis xyz="0 1 0"/>
+        </joint>
+    </xacro:macro>
+
+    <xacro:Wheel lr="left"/>
+    <xacro:Wheel lr="right"/>
 </robot>
